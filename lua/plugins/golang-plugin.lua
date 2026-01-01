@@ -1,6 +1,38 @@
 return {
-  -- "fredrikaverpil/neotest-golang", -- Unit test coverage helper
-  "stevearc/conform.nvim", -- Formatter
-  -- "nvimtools/none-ls.nvim", -- A extension lib for lsp to allow more control via lua
-  "mfussenegger/nvim-lint", -- Asynchronous linter as a complementary for built-in LSP support
+  -- 1. Keep nvim-lint
+  "mfussenegger/nvim-lint",
+
+  -- 2. Configure Conform
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        go = { "goimports", "gofmt" },
+      },
+    },
+  },
+
+  -- 3. Load neotest-golang (Do NOT add opts here)
+  {
+    "fredrikaverpil/neotest-golang",
+    -- dependencies = { "leoluz/nvim-dap-go" }, -- Recommended if you want debugging
+  },
+
+  -- 4. Configure neotest to use the adapter
+  {
+    "nvim-neotest/neotest",
+    opts = function(_, opts)
+      opts.adapters = opts.adapters or {}
+
+      -- Manually initialize the adapter with your configuration
+      local neotest_golang = require("neotest-golang")({
+        testify_enabled = true,
+        -- Add other neotest-golang options here if needed, e.g.:
+        -- go_test_args = { "-v", "-race", "-count=1", "-timeout=60s" },
+      })
+
+      -- Add it to the neotest adapters list
+      table.insert(opts.adapters, neotest_golang)
+    end,
+  },
 }
