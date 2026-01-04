@@ -35,15 +35,14 @@ return {
         suggestion = {
           auto_trigger = true,
         },
+        filetypes = {
+          golang = true,
+          rust = true,
+          python = true,
+          ["*"] = false, -- disable for all other filetypes and ignore default `filetypes`
+        },
       })
     end,
-    --   -- require("copilot").setup({
-    --   --   filetypes = {
-    --   --     golang = true,
-    --   --     rust = true,
-    --   --     python = true,
-    --   --     ["*"] = false, -- disable for all other filetypes and ignore default `filetypes`
-    --   --   },
-    --   -- }),
   },
+  {},
 }
