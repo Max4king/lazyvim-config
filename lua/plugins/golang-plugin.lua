@@ -15,7 +15,7 @@ return {
   -- 3. Load neotest-golang (Do NOT add opts here)
   {
     "fredrikaverpil/neotest-golang",
-    -- dependencies = { "leoluz/nvim-dap-go" }, -- Recommended if you want debugging
+    dependencies = { "mfussenegger/nvim-dap" }, -- Recommended if you want debugging
   },
 
   -- 4. Configure neotest to use the adapter
@@ -33,6 +33,21 @@ return {
 
       -- Add it to the neotest adapters list
       table.insert(opts.adapters, neotest_golang)
+    end,
+  },
+
+  -- 5. Golang Coverage Support
+  {
+    "andythigpen/nvim-coverage",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("coverage").setup({
+        lang = {
+          go = {
+            coverage_file = vim.fn.getcwd() .. "/coverage.out",
+          },
+        },
+      })
     end,
   },
 }

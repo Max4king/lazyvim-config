@@ -10,39 +10,40 @@ return {
     },
   },
   {
+    "copilotlsp-nvim/copilot-lsp",
+  },
+  {
     "zbirenbaum/copilot.lua",
-    --   dependencies = {
-    --     "copilotlsp-nvim/copilot-lsp",
-    --   },
-    --   requires = {
-    --     "copilotlsp-nvim/copilot-lsp",
-    --     init = function()
-    --       vim.g.copilot_nes_debounce = 500
-    --     end,
-    --   },
-    --   cmd = "Copilot",
-    --   event = "InsertEnter",
+    requires = {
+      "copilotlsp-nvim/copilot-lsp",
+      init = function()
+        vim.g.copilot_nes_debounce = 500
+      end,
+    },
+    cmd = "Copilot",
+    event = "InsertEnter",
     config = function()
       require("copilot").setup({
-        -- nes = {
-        --   enabled = true,
-        --   keymap = {
-        --     accept_and_goto = "<leader>p",
-        --     accept = false,
-        --     dismiss = "<Esc>",
-        --   },
-        -- },
+        nes = {
+          enabled = true,
+          keymap = {
+            accept_and_goto = "<leader>p",
+            accept = false,
+            dismiss = "<Esc>",
+          },
+          move_count_threshold = 3,
+        },
         suggestion = {
           auto_trigger = true,
         },
         filetypes = {
-          golang = true,
+          go = true,
           rust = true,
+          lua = true,
           python = true,
           ["*"] = false, -- disable for all other filetypes and ignore default `filetypes`
         },
       })
     end,
   },
-  {},
 }
