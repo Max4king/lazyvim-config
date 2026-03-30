@@ -41,6 +41,8 @@ return {
           rust = true,
           lua = true,
           python = true,
+          typescript = true,
+          typescriptreact = true,
           ["*"] = false, -- disable for all other filetypes and ignore default `filetypes`
         },
       })
