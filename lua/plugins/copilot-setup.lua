@@ -1,15 +1,5 @@
 return {
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "nvim-lua/plenary.nvim", branch = "master" },
-    },
-    build = "make tiktoken",
-    opts = {
-      -- See Configuration section for options
-    },
-  },
-  {
     "copilotlsp-nvim/copilot-lsp",
   },
   {
@@ -24,21 +14,21 @@ return {
     event = "InsertEnter",
     config = function()
       require("copilot").setup({
-        nes = {
-          enabled = true,
-          keymap = {
-            accept_and_goto = "<leader>p",
-            accept = false,
-            dismiss = "<Esc>",
-          },
-          move_count_threshold = 3,
-        },
+        -- nes = {
+        --   enabled = false,
+        --   keymap = {
+        --     accept_and_goto = "<leader>p",
+        --     accept = false,
+        --     dismiss = "<Esc>",
+        --   },
+        --   move_count_threshold = 3,
+        -- },
         suggestion = {
           auto_trigger = true,
         },
         filetypes = {
           go = true,
-          rust = true,
+          rust = false,
           lua = true,
           python = true,
           typescript = true,
