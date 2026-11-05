@@ -1,46 +1,48 @@
 return {
-  {
-    "milanglacier/minuet-ai.nvim",
-    cmd = "Minuet",
-    opts = {
-      -- Choose your preferred provider: 'openai', 'claude', 'gemini', 'codestral', 'ollama', etc.
-      provider = "openai_compatible",
-      provider_options = {
-        openai_compatible = {
-          model = "Qwen3.8 27B NVFP4",
-          end_point = "https://compute-2-ai.max4king.com/v1",
-          name = "Vllm",
-          optional = {
-            thinking = { type = "disabled" },
-          },
-          -- Set your OPENAI_API_KEY environment variable in your shell.
-          -- Alternatively, specify: api_key = "YOUR_API_KEY",
-        },
-      },
-    },
-  },
-  {
-    "saghen/blink.cmp",
-    opts = {
-      sources = {
-        default = { "lsp", "path", "snippets", "buffer", "minuet" },
-        providers = {
-          minuet = {
-            name = "minuet",
-            module = "minuet.blink",
-            score_offset = 8, -- Boost priority in autocomplete list
-            async = true,
-          },
-        },
-      },
-      keymap = {
-        -- Optional: Add a keybinding to manually trigger Minuet AI completion
-        ["<A-y>"] = {
-          function()
-            require("minuet").make_blink_map()()
-          end,
-        },
-      },
-    },
-  },
+
+  -- {
+  --   "milanglacier/minuet-ai.nvim",
+  --   cmd = "Minuet",
+  --   opts = {
+  --     -- Choose your preferred provider: 'openai', 'claude', 'gemini', 'codestral', 'ollama', etc.
+  --     provider = "openai_compatible",
+  --     provider_options = {
+  --       openai_compatible = {
+  --         model = "Qwen3.8-27B-NVFP4",
+  --         end_point = "https://compute-2-ai.max4king.com/v1/chat/completions",
+  --         name = "Vllm",
+  --         api_key = "TERM",
+  --         optional = {
+  --           thinking = { type = "disabled" },
+  --         },
+  --         -- Set your OPENAI_API_KEY environment variable in your shell.
+  --         -- Alternatively, specify: api_key = "YOUR_API_KEY",
+  --       },
+  --     },
+  --   },
+  -- },
+  -- {
+  --   "saghen/blink.cmp",
+  --   opts = {
+  --     sources = {
+  --       default = { "lsp", "path", "snippets", "buffer", "minuet" },
+  --       providers = {
+  --         minuet = {
+  --           name = "minuet",
+  --           module = "minuet.blink",
+  --           score_offset = 8, -- Boost priority in autocomplete list
+  --           async = true,
+  --         },
+  --       },
+  --     },
+  --     keymap = {
+  --       -- Optional: Add a keybinding to manually trigger Minuet AI completion
+  --       ["<A-y>"] = {
+  --         function()
+  --           require("minuet").make_blink_map()()
+  --         end,
+  --       },
+  --     },
+  --   },
+  -- },
 }
