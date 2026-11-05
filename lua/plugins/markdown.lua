@@ -1,3 +1,9 @@
 return {
-  "microsoft/markitdown",
+  {
+    "microsoft/markitdown",
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown", "codecompanion" },
+  },
 }
